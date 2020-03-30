@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.base.viewmodel.MainViewModel" />
+        <variable
+            name="item"
+            type="com.project.base.model.local.entity.Weather" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        >
+
+        <TextView
+            android:id="@+id/item_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{item.dateFormat}"
+            android:layout_weight="5"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/content_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{item.state}"
+            android:layout_weight="4"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/content_temp_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{@string/celsius(item.min)}"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/content_temp_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="/"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/content_temp_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{@string/celsius(item.max)}"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/content_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{@string/percentage(item.humid)}"
+            android:textColor="@android:color/holo_blue_bright"
+            android:layout_weight="3"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+</layout>
+

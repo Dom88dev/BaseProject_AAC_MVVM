@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.base.viewmodel.MainViewModel" />
+
+        <variable
+            name="weatherNow"
+            type="com.project.base.model.local.entity.Weather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.RecentWeatherFragment"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        >
+
+        <TextView
+            android:id="@+id/city_current_weather"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{weatherNow.city}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/icon_current_weather"
+            />
+
+        <ImageView
+            android:id="@+id/icon_current_weather"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent=".3"
+            app:layout_constraintDimensionRatio="w, 1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            imageUri="@{weatherNow.iconUri}"
+            />
+
+        <TextView
+            android:id="@+id/state_current_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weatherNow.state}"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@+id/city_current_weather"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/temp_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:text="@{@string/celsius(weatherNow.now)}"
+            app:layout_constraintTop_toBottomOf="@+id/state_current_weather"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/temp_feel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="26sp"
+            android:text="@{@string/celsius_with_bracelet(weatherNow.feelsLike)}"
+            app:layout_constraintStart_toEndOf="@+id/temp_current"
+            app:layout_constraintBottom_toBottomOf="@+id/temp_current"
+            />
+
+        <TextView
+            android:id="@+id/temp_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@{@string/celsius(weatherNow.min)}"
+            android:textColor="@android:color/holo_blue_dark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/divider_temp"
+            app:layout_constraintTop_toBottomOf="@+id/temp_current"
+            />
+
+        <TextView
+            android:id="@+id/divider_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/temp_min"
+            app:layout_constraintEnd_toStartOf="@+id/temp_max"
+            app:layout_constraintTop_toBottomOf="@+id/temp_current"
+            />
+
+        <TextView
+            android:id="@+id/temp_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@{@string/celsius(weatherNow.max)}"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintStart_toEndOf="@+id/divider_temp"
+            app:layout_constraintTop_toBottomOf="@+id/temp_current"
+            />
+
+        <ImageView
+            android:id="@+id/ic_humidity"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_humidity"
+            android:tint="@android:color/holo_blue_bright"
+            app:layout_constraintStart_toEndOf="@+id/state_current_weather"
+            app:layout_constraintBottom_toBottomOf="@+id/state_current_weather"
+            />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/percentage(weatherNow.humid)}"
+            android:textSize="20sp"
+            android:textColor="@android:color/holo_blue_bright"
+            app:layout_constraintStart_toEndOf="@+id/ic_humidity"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_humidity"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

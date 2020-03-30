@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.base.viewmodel.MainViewModel" />
+
+        <variable
+            name="items"
+            type="java.util.List&lt;com.project.base.model.local.entity.Weather>" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="com.project.base.ui.main.WeatherHistoryFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".ui.main.WeatherHistoryFragment"
+        tools:listitem="@layout/item_weather_history"
+        android:background="@android:color/white"
+        viewModel="@{vm}"
+        weathers="@{items}"
+        viewModelForItemTouchHelper="@{vm}"
+        />
+
+</layout>

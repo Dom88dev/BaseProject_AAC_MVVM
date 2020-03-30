@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BaseProject</string>
+
+    <string name="celsius">%1$.1f&#176;C</string>
+    <string name="celsius_with_bracelet">(%1$.1f&#176;C)</string>
+
+    <!--  String.format 메소드를 사용할 때 %기호를 그냥 사용하면 안되고 %%로 사용해야한다.  -->
+    <string name="percentage">%1$d%%</string>
+</resources>

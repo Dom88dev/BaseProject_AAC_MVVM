@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.project.base.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        refreshing="@{vm.refreshing}"
+        onRefresh="@{() -> vm.refreshWeather()}"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.MainActivity"
+            android:background="@android:color/holo_blue_light"
+            >
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".35"
+                />
+
+            <fragment
+                android:id="@+id/fragment_current"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:name="com.project.base.ui.main.RecentWeatherFragment"
+                android:tag="current"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/guideline"
+                tools:layout="@layout/fragment_recent_weather" />
+
+            <fragment
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:name="com.project.base.ui.main.WeatherHistoryFragment"
+                android:tag="history"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout="@layout/fragment_weather_history_list"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>
